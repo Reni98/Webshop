@@ -89,4 +89,14 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: "Szerver hiba" });
     }
 });
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const [result] = await db.query("DELETE FROM users WHERE id = ?", [req.params.id]);
+        if (result.affectedRows === 0) return res.status(404).json({ error: "Nincs ilyen felhasználó!" });
+        res.json({ message: "Felhasználó törölve!" });
+    } catch (error) {
+        res.status(500).json({ error: "Szerver hiba" });
+    }
+});
 module.exports = router;
