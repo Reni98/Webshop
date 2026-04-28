@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 });
 
 // Új termék hozzáadása
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         const { name, category, price, stock, description } = req.body;
         const sql = "INSERT INTO products (name, category, price, stock, description) VALUES (?, ?, ?, ?, ?)";
@@ -42,4 +42,23 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+router.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, category, price, stock, description } = req.body;
+        
+        let sql = "UPDATE products SET name = ?, category = ?, price = ?, stock = ?, description = ? WHERE id = ?";
+        let params = [name,category,price,stock,description, id];
+
+       
+        const [result] = await db.query(sql, params);
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "A termék nem található!" });
+        }
+        res.json({ message: "Adatok sikeresen frissítve!" });
+    } catch (error) {
+        res.status(500).json({ error: "Szerver hiba" });
+    }
+});
 module.exports = router;
