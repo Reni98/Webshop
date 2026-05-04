@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import '../Register/Register.css'; // Ellenőrizd, hogy a fájl tényleg ebben a mappában van!
+import '../Register/Register.css';
 
 const Register = () => {
     // Kezdőállapot az űrlaphoz
@@ -24,7 +24,7 @@ const Register = () => {
         setStatus({ message: '', type: '' }); // Előző üzenet törlése
 
         try {
-            // A backend URL-je - ellenőrizd a portot és az útvonalat!
+            // A backend URL-je 
             const res = await axios.post('http://localhost:3000/users/register', user);
             
             setStatus({ 
