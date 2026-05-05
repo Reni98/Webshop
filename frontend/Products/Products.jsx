@@ -2,7 +2,6 @@ import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Products.css';
 
-// Itt állítsd be a backend szervered címét!
 const API_URL = 'http://localhost:3000/products';
 
 const Product = () => {
