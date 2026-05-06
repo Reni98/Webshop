@@ -1,0 +1,31 @@
+ h1{
+    text-align: center;
+    margin: 10px 0 30px;    
+}
+.contact-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px 10px;
+    background-color: white;
+    width: 700px;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: 5px 10px #888888;
+}
+
+.contact-us{
+    display: flex;
+    flex-direction: column;   
+}
+
+.contact-container{
+    background-color: #ddd;
+    padding: 15px;
+}
+
+input{
+    margin-bottom: 10px;
+}
